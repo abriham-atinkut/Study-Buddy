@@ -36,3 +36,7 @@ htmlcov/
 
 
 **/migrations/__pycache__/
+
+
+all_erd.png
+erd.png

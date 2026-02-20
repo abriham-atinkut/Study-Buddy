@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 django = "<5.0,>=4.2.8"
+django-extensions = "*"
+graphviz = "*"
+pydotplus = "*"
 
 [dev-packages]
 

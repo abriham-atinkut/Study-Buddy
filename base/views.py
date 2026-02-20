@@ -9,7 +9,6 @@ from .models import Room
 
 def home(request):
     rooms = Room.objects.all()
-    print(rooms)
     context = {'rooms': rooms}
     return render(request, 'base/home.html', context)
 
