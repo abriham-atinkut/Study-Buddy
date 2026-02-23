@@ -6,11 +6,11 @@
 
   <div>
     {% for room in rooms %}
-    <!-- {% url 'room' room.id  %} means /room/{room.id} -->
     <div>
       <span>@{{room.host.username}}</span>
       <p>{{room.id}}. <a href="{% url 'room' room.id  %}">{{room.name}}</a></p>
       <small>{{room.topic.name}} </small>
+      <a href="{% url 'edit-room' room.id  %}">Edit</a>
       <hr />
     </div>
 
