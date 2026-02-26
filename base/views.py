@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Room
+from .models import Room, Topic
 from .forms import RoomForm
 # rooms = [
 #     { 'id':1 , 'name': 'Lets learn python' },
@@ -8,8 +8,10 @@ from .forms import RoomForm
 # ]
 
 def home(request):
-    rooms = Room.objects.all()
-    context = {'rooms': rooms}
+    q = request.GET.get('q') or ''
+    rooms = Room.objects.filter(topic__name__icontains=q)
+    topics = Topic.objects.all()
+    context = {'rooms': rooms, 'topics': topics}
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
@@ -48,3 +50,6 @@ def deleteRoom(request, pk):
         return redirect('home')
     context = {'obj': room}
     return render(request, 'base/delete.html', context)
+
+
+# 2:08
