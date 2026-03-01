@@ -4,7 +4,7 @@ from .serializers import TopicSerializer, RoomSerializer, MessageSerializer
 from django.db.models import Q
 from .forms import RoomForm
 from .models import Topic, Room, Message
-
+from rest_framework.permissions import IsAuthenticated
 
 def home(request):
     q = request.GET.get('q') or ''
@@ -61,7 +61,7 @@ class TopicViewSet(viewsets.ModelViewSet):
 class RoomViewSet(viewsets.ModelViewSet):
     queryset = Room.objects.all()
     serializer_class = RoomSerializer
-
+    permission_classes = [IsAuthenticated]
 
 class MessageViewSet(viewsets.ModelViewSet):
     queryset = Message.objects.all()
