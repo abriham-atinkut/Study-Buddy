@@ -1,18 +1,56 @@
-# Study Buddy
+# Study Buddy – Django REST API
 
-Study Buddy is a Django-based web application where users can create and join study rooms on various topics, engage in conversations, and collaborate with other learners.
+**Study Buddy** is a web application built with **Django** and the **Django REST Framework (DRF)**. 
 
-## Project Overview
+This project demonstrates a fully functional backend capable of managing data efficiently through a clean, scalable API while providing a built-in template system for easy interaction.
 
-Study Buddy provides a basic social learning platform where users can:
+---
 
-- Create study rooms on different topics
-- Browse and join existing rooms
-- View real-time room conversations
-- See an activity feed of recent interactions
-- Authenticate with Django's built-in login/logout system
+## 🚀 Key Features
 
-It's implemented using the Python Django web framework, and demonstrates a wide array of Django features from models and views to templates and user authentication.
+* **Full CRUD Functionality**: Create, Read, Update, and Delete study rooms through API endpoints and the frontend.
+* **Search Functionality**: Integrated search to help users find specific study rooms quickly.
+* **Token-Based Authentication**: Secure access control ensuring only authorized users can modify data via Postman or other API clients.
+* **Django Templates**: Includes a basic frontend to visualize database records directly in the browser.
+* **Scalable Architecture**: Designed to serve as a robust backend for any modern frontend (React, Vue, etc.).
+
+
+
+---
+
+## 🛠 Tech Stack
+
+* **Backend:** Python, Django
+* **API Framework:** Django REST Framework (DRF)
+* **Authentication:** TokenAuthentication
+* **Tools:** Postman (for API testing & documentation)
+* **Database:** SQLite (Default)
+
+---
+
+## 🔌 API Endpoints & Usage
+
+| Method | Endpoint | Description | Auth Required |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/token/` | Generate Auth Token | No |
+| `GET` | `/rooms/` | List all rooms | **Yes** |
+| `POST` | `/rooms/` | Create a new room | **Yes** |
+| `PUT` | `/rooms/<id>/` | Update a room | **Yes** |
+| `DELETE` | `/rooms/<id>/` | Delete a room | **Yes** |
+
+### Authentication Workflow (Postman)
+1.  **Access Denied**: Attempting to GET `/rooms/` without a token returns a 403 Forbidden error.
+2.  **Token Generation**: Send `username` and `password` to the token endpoint to receive a unique key.
+3.  **Authorized Access**: Add the token to the request header (`Authorization: Token <key>`) to unlock the full list of rooms.
+
+---
+
+## 💻 Installation & Setup
+
+1. **Clone the repo:**
+   ```bash
+   git clone [https://github.com/your-username/study-buddy.git](https://github.com/your-username/study-buddy.git)
+   cd study-buddy
 
 ## Quick Setup
 
