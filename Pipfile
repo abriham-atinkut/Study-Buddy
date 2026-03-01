@@ -8,6 +8,7 @@ django = "<5.0,>=4.2.8"
 django-extensions = "*"
 graphviz = "*"
 pydotplus = "*"
+djangorestframework = "*"
 
 [dev-packages]
 

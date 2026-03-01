@@ -1,12 +1,10 @@
 from django.shortcuts import render, redirect
+from rest_framework import viewsets
+from .serializers import TopicSerializer, RoomSerializer, MessageSerializer
 from django.db.models import Q
-from .models import Room, Topic
 from .forms import RoomForm
-# rooms = [
-#     { 'id':1 , 'name': 'Lets learn python' },
-#     { 'id':2 , 'name': 'Design with me' },
-#     { 'id':3 , 'name': 'Frontend Developer ' }
-# ]
+from .models import Topic, Room, Message
+
 
 def home(request):
     q = request.GET.get('q') or ''
@@ -54,4 +52,17 @@ def deleteRoom(request, pk):
     return render(request, 'base/delete.html', context)
 
 
-# 2:08
+
+class TopicViewSet(viewsets.ModelViewSet):
+    queryset = Topic.objects.all()
+    serializer_class = TopicSerializer
+
+
+class RoomViewSet(viewsets.ModelViewSet):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+
+
+class MessageViewSet(viewsets.ModelViewSet):
+    queryset = Message.objects.all()
+    serializer_class = MessageSerializer
